@@ -11,18 +11,18 @@ servo2.attach(0); //D3
 servo1.write(48);
 servo2.write(30);
 
-delay(2000);
+delay(1000);
 
 }
 
 void loop() {
 
 
-//servo.write(18);
+servo.write(18);
 
 delay(1000);
 
-//servo.write(42);
+servo.write(42);
 
 delay(1000);
 
