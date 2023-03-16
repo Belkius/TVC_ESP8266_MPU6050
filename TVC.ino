@@ -11,7 +11,8 @@ Adafruit_MPU6050 mpu;
 Servo x;
 Servo y;
 float theta=16;
-float ox,oy,px=0,py=0,R,P,I,D,Kp,Ki,Kd,calx=0,caly=0,roz,od=0,oddx=0,oddy=0,dt,pos=0;
+float ox, oy, px=0, py=0, R, P, I, D, Kp, Ki, Kd, calx=0, caly=0, roz, od=0, oddx=0, oddy=0, dt, pos=0;
+//servo state for centered TVC
 float xmid=48;
 float ymid=30;
 
@@ -125,7 +126,8 @@ void loop() {
   sensors_event_t a, g, temp;
   mpu.getEvent(&a, &g, &temp);
 
- /* Serial.print("Acceleration X: ");
+ /* 
+  Serial.print("Acceleration X: ");
   Serial.print(a.acceleration.x);
   Serial.print(", Y: ");
   Serial.print(a.acceleration.y);
@@ -173,25 +175,25 @@ void loop() {
     Serial.println("");
  
   
-  if(abs(ox-kalRoll)>0.5){
-    od=ox-kalRoll;
-    P=Kp*od;
-    calx+=od*dt;
-    I=Ki*calx;
-    roz=(od-oddx)/dt;
-    D=Kd*roz;
-    R=P+I+D;
-    oddx=od;
+  if(abs(ox - kalRoll) > 0.5){
+    od = ox - kalRoll;
+    P = Kp * od;
+    calx += od * dt;
+    I = Ki * calx;
+    roz = (od - oddx) / dt;
+    D = Kd * roz;
+    R = P + I + D;
+    oddx = od;
     //Serial.println(R);Serial.println("");
    
-    if(R>theta){
-    pos=xmid+theta;
+    if(R > theta){
+    pos = xmid + theta;
     }
-    else if (R<(-theta)){
-    pos=xmid-theta;
+    else if (R < (-theta)){
+    pos = xmid - theta;
     }
     else{
-    pos=xmid+R;
+    pos = xmid + R;
     }
    // Serial.println(R);Serial.println("pos: ");
    // Serial.println(pos);Serial.println("");
@@ -202,25 +204,25 @@ void loop() {
   
    //////////////////////////////////////////////////////////////////////////////////////////////////////
    
-    if(abs(oy-kalPitch)>0.5){
-    od=oy-kalPitch;
-    P=Kp*od;
-    caly+=od*dt;
-    I=Ki*caly;
-    roz=(od-oddy)/dt;
-    D=Kd*roz;
-    R=P+I+D;
-    oddy=od;
+    if(abs(oy - kalPitch) > 0.5){
+    od = oy - kalPitch;
+    P = Kp * od;
+    caly += od * dt;
+    I = Ki * caly;
+    roz = (od-oddy) / dt;
+    D = Kd * roz;
+    R = P + I + D;
+    oddy = od;
     //Serial.println(R);Serial.println("");
    
-    if(R>theta){
-    pos=ymid+theta;
+    if(R > theta){
+    pos = ymid + theta;
     }
-    else if (R<(-theta)){
-    pos=ymid-theta;
+    else if (R < (-theta)){
+    pos = ymid - theta;
     }
     else{
-    pos=ymid+R;
+    pos = ymid + R;
     }
     //Serial.println(R);Serial.println("pos: ");
     //Serial.println(pos);Serial.println("");
