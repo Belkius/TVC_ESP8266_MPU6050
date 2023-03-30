@@ -2,8 +2,7 @@
 
 Program written in arduino for TVC of a model rocket. The model is using a ESP8266 board with MPU6050 module and two basic servos. 
 This code uses an MPU6050 sensor to read the pitch and roll angles and apply them to control two servos for TVC (thrust vector control). The Kalman Filter algorithm is used to improve the stability of the readings. The code is written in C++ and is compatible with Arduino boards.
-Kalman filter used in the project is available here: 
-https://github.com/jarzebski/Arduino-KalmanFilter/blob/a6edd0524e8502b80910fce535a1004f980cf097/KalmanFilter_MPU6050/KalmanFilter_MPU6050.ino
+The code being used for the Kalman filter is from the "KalmanFilter_MPU6050.ino" file in the "Arduino-KalmanFilter" repository on GitHub. Here's the link to the specific version of the file being used: https://github.com/jarzebski/Arduino-KalmanFilter/blob/a6edd0524e8502b80910fce535a1004f980cf097/KalmanFilter_MPU6050/KalmanFilter_MPU6050.ino
 
 ## Dependencies
 This code requires the following libraries to be installed:
